@@ -5,7 +5,7 @@
     <div class="login-box card">
         <div class="card-body">
             <form ngNativeValidate #f="ngForm" class="form-horizontal form-material" id="loginform" (ngSubmit)="ingresar( f )">
-                <a href="javascript:void(0)" class="text-center db"><img src="assets/images/logo-icon.png" alt="Home" /><br/><img src="../assets/images/logo-text.png" alt="Home" /></a>
+                <a href="javascript:void(0)" class="text-center db"><img src="assets/images/logo-icon.png" alt="Home" /></a>
                 <div class="form-group m-t-40">
                     <div class="col-xs-12">
                         <input [ngModel]="email" name="email" class="form-control" type="email" required placeholder="Correo del Usuario">
@@ -19,14 +19,14 @@
                 <div class="form-group row">
                     <div class="col-md-12">
                         <div class="checkbox checkbox-primary pull-left p-t-0">
-                            <input [(ngModel)]="recuerdame" name="recuerdame" id="checkbox-signup" type="checkbox" class="filled-in chk-col-light-blue">
+                            <input [(ngModel)]="recuerdame" name="recuerdame" id="checkbox-signup" type="checkbox" class="filled-in chk-col-orange">
                             <label for="checkbox-signup"> Recordarme </label>
                         </div>
                         <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Olvido clave?</a> </div>
                 </div>
                 <div class="form-group text-center m-t-20">
                     <div class="col-xs-12">
-                        <button class="btn btn-info btn-lg btn-block text-uppercase btn-rounded" type="submit">Ingresar</button>
+                        <button class="btn btn-warning btn-lg btn-block text-uppercase text-inverse btn-rounded" type="submit">Ingresar</button>
                     </div>
                 </div>
                 <!-- <div class="row">
@@ -39,7 +39,7 @@
                 </div> -->
                 <div class="form-group m-b-0">
                     <div class="col-sm-12 text-center">
-                        No tiene cuenta? <a routerLink="/register" class="text-primary m-l-5"><b>Registrese</b></a>
+                        No tiene cuenta? <a routerLink="/register" class="text-warning m-l-5"><b>Registrese</b></a>
                     </div>
                 </div>
             </form>
