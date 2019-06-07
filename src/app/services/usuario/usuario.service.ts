@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from 'src/app/config/config';
-import swal from 'sweetalert';
+// import * as swal from 'sweetalert';
+declare var swal: any;
 
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -81,8 +82,10 @@ export class UsuarioService {
     url += '?token=' + this.token;
     return this.http.put(url, usuario)
     .pipe( map( (resp: any) => {
-      const usuarioDB: Usuario = resp.usuario;
-      this.guardarStorage(usuarioDB._id, this.token, usuarioDB);
+      if (usuario._id === this.usuario._id ) {
+        const usuarioDB: Usuario = resp.usuario;
+        this.guardarStorage(usuarioDB._id, this.token, usuarioDB);
+      }
       swal('Usuario actualizado', usuario.nombre, 'success');
       return true;
     }));
@@ -99,4 +102,28 @@ export class UsuarioService {
         console.log(resp);
       });
   }
+
+  cargarUsuarios(desde: number = 0) {
+    const url = URL_SERVICIOS + '/usuario?desde=' + desde;
+    return this.http.get(url);
+  }
+
+  buscarUsuarios(termino: string) {
+    let url = URL_SERVICIOS + '/busqueda/coleccion/usuario/' + termino;
+    return this.http.get(url)
+    .pipe( map( (resp: any) => resp.usuario ));
+
+  }
+
+  borrarUsuarios(id: string) {
+    let url = URL_SERVICIOS + '/usuario/' + id;
+    url += '?token=' + this.token;
+    return this.http.delete(url)
+    .pipe( map( resp => {
+       swal('Usuario Borrado','El usuario ha sido borrado correctamente','success'); 
+       return true;
+    }));
+
+  }
+
 }

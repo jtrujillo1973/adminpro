@@ -32,7 +32,7 @@
         <div class="card">
             <div class="card-body" align="center">
                 <h4 class="card-title">Perfil de usuario</h4>
-                <h6 class="card-subtitle">Nombre de usuario</h6>
+                <h6 class="card-subtitle">{{ usuario.nombre }}</h6>
                 <img *ngIf="!imagenTemp" [src]="usuario.img | imagen" class="w150">
                 <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150">
                 <input type="file" (change)="seleccionImagen($event.target.files[0])">
